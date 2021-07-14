@@ -54,7 +54,7 @@ public class Mp3FileReaderDAO {
                 //System.out.println(String.format("%01d", Integer.parseInt(kural_no))+":"+"data:audio/ogg;base64,"+encode);
                 int status = updateKiliText(String.format("%01d", Integer.parseInt(kural_no)), encode);
                 if(status != 1){
-                    System.out.println(kural_no);
+                    //System.out.println(kural_no);
                 }
             }
             System.out.println("Completed...");

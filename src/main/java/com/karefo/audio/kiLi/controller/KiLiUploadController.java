@@ -19,7 +19,7 @@ public class KiLiUploadController {
         try{
             rawjasontext  = URLDecoder.decode(rawjasontext.toString().trim(),"UTF-8");
             rawjasontext  = rawjasontext.substring(0, rawjasontext.length());
-            System.out.println(">>|"+rawjasontext);
+            //System.out.println(">>|"+rawjasontext);
             return  service.saveAudioText(rawjasontext.substring(rawjasontext.indexOf("{"), rawjasontext.lastIndexOf("}")));
             //return  image.saveImageText(data.substring(data.indexOf("{"), data.lastIndexOf("}")));
         }catch (Exception e){
