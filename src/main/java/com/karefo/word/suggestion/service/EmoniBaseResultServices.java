@@ -28,6 +28,9 @@ public class EmoniBaseResultServices {
     @Autowired
     CholService service;
 
+    @Autowired
+    GraphemeResults graphemeResults;
+
     public List<EmoniBaseImpl> getCholResult(String word){
         List<EmoniBaseImpl> result = new ArrayList<>();
         try{
@@ -104,7 +107,25 @@ public class EmoniBaseResultServices {
         //System.out.println(piri_result.toString());
         return piri_result;
     }
+    public List<EmoniBaseImpl> getGraphemeResults(String word) {
+        StringBuilder result = new StringBuilder();
+        List<EmoniBaseImpl> piri_result = new ArrayList<>();
 
+        try{
+            ArrayList<String> res=  graphemeResults.graphemepattern(word);
+
+            for(int i=0;i<res.size();i++){
+                EmoniBaseImpl impl = new EmoniBaseImpl();
+                impl.setTam_word(res.get(i));
+                impl.setEng_word("");
+                impl.setPos("");
+                piri_result.add(impl);
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return piri_result;
+    }
 
     public List<EmoniBaseImpl> getEmoniResultWithConstraint(String word, String type) {
         StringBuilder result = new StringBuilder();
@@ -173,11 +194,12 @@ public class EmoniBaseResultServices {
             List<EmoniBaseImpl> cholresult = getCholResult(word);
             List<EmoniBaseImpl> piriporiresult = getPiriporiResult(word);
             List<EmoniBaseImpl> emoniresult = getEmoniResult(word);
+            List<EmoniBaseImpl> graphmeresult = getGraphemeResults(word);
             if(cholresult.size() > 0 || piriporiresult.size() > 0 || emoniresult.size() > 0) {
                 json_result.put("chol_res",cholresult);
                 json_result.put("piripori_res",piriporiresult);
                 json_result.put("phonemes_res",emoniresult);
-                json_result.put("graphemes_res","");
+                json_result.put("graphemes_res",graphmeresult);
                 json_result.put("req_cnt",count);
             } else {
                 json_result.put("chol_res","");
