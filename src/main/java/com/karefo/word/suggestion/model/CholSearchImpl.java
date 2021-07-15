@@ -44,6 +44,16 @@ public class CholSearchImpl {
     private String vd;
     private String vdc;
 
+    private String grapheme_score;
+
+    public String getGrapheme_score() {
+        return grapheme_score;
+    }
+
+    public void setGrapheme_score(String grapheme_score) {
+        this.grapheme_score = grapheme_score;
+    }
+
     public String getTawo() {
         return tawo;
     }
