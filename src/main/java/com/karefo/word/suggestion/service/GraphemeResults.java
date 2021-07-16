@@ -125,8 +125,8 @@ public class GraphemeResults {
         wordslist = new ArrayList<String>(hashSet);
         return wordslist;
     }
-    public List<CholSearchImpl> getGraphemeScoreWords(String score){
-        String query="SELECT word,uwid,grapheme_score FROM Shan.words where grapheme_score=:score";
+    public List<CholSearchImpl> getGraphemeScoreWords(String score){///NEED to CHANGE TABLE
+        String query="SELECT word,uwid,grapheme_score FROM grapheme_score_db.words where grapheme_score=:score";
 
         MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue("score", score);

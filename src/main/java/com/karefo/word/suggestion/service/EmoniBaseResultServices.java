@@ -115,6 +115,7 @@ public class EmoniBaseResultServices {
             ArrayList<String> res=  graphemeResults.graphemepattern(word);
 
             for(int i=0;i<res.size();i++){
+
                 EmoniBaseImpl impl = new EmoniBaseImpl();
                 impl.setTam_word(res.get(i));
                 impl.setEng_word("");
