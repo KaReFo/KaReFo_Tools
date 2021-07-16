@@ -126,7 +126,7 @@ public class GraphemeResults {
         return wordslist;
     }
     public List<CholSearchImpl> getGraphemeScoreWords(String score){///NEED to CHANGE TABLE
-        String query="SELECT word,uwid,grapheme_score FROM grapheme_score_db.words where grapheme_score=:score order by popularity_score desc";
+        String query="SELECT word,uwid,grapheme_score FROM grapheme_score_db.words where grapheme_score=:score order by popularity_score desc ";
         MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue("score", score);
 
