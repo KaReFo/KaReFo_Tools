@@ -102,8 +102,11 @@ public class GraphemeResults {
     public ArrayList<String> graphemepattern(String input){
         loader();
         ArrayList<String> letters= tamilsplitWord(input);
-        ArrayList<String> possiblewords=  graphemeEdit(letters);
+
+        ArrayList<String> possiblewords=  graphemeEdit(letters,input);
+
         ArrayList<String> possiblePatterns=  getPatterns(possiblewords);
+
 
 
         return  getRelatedPatterns(possiblePatterns);
@@ -183,6 +186,7 @@ public class GraphemeResults {
     }
 
 
+
     public String replacegrapheme(ArrayList<String> letters,String replace,int i ){
         letters.remove(i);
         letters.remove(i);
@@ -193,8 +197,51 @@ public class GraphemeResults {
         }
 
         return res;
+
+    } public   ArrayList<String> graphemeEdit(ArrayList<String> letters,String res){
+
+        ArrayList<String> results=new ArrayList<String>();
+        int k=0;
+
+        for(int i=0;i<letters.size()-1;i++){
+
+            String t1=letters.get(i);
+            String t2=letters.get(i+1);
+
+            if(t1.equals("ச") && t2.equals("உ") ){
+                results.add(replacegrapheme(letters,"கூ",i));
+
+
+            }
+            else if(t1.equals("உ") && t2.equals("ள") ){
+
+                results.add(replacegrapheme(letters,"ஊ",i));
+            }
+            else if(t1.equals("உ") && t2.equals("ற") ){
+                results.add(replacegrapheme(letters,"ஹ",i));
+
+
+            }
+
+            else if(t1.equals("உ") && t2.equals("ர்") ){
+                results.add(replacegrapheme(letters,"ஷ்",i));
+
+            }
+
+            else if(t1.equals("ச") && t2.equals("ு") ){
+                results.add(replacegrapheme(letters,"க",i));
+
+            }
+
+
+
+        }
+
+        results.add(res);
+
+        return results;
     }
-    public   ArrayList<String> graphemeEdit(ArrayList<String> letters){
+    public   ArrayList<String> graphemeEdit1(ArrayList<String> letters){
         String res="";
         ArrayList<String> results=new ArrayList<String>();
         int k=0;
